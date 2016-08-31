@@ -44,9 +44,20 @@
     };
 
     /**
+    * @function stopSong
+    * @desc A private function stopping the current song and setting the playing property of the song object to null
+    * @param {Object} song
+    */
+    var stopSong = function(song){
+      currentBuzzObject.stop();
+      song.playing = null;
+    };
+
+    /**
     * @function getSongIndex
     * @desc A private function getting the index of a song
     * @param {Object} song
+    * @returns {Integer} sond index
     */
     var getSongIndex = function(song) {
       return currentAlbum.songs.indexOf(song);
@@ -94,8 +105,24 @@
       currentSongIndex--;
 
       if (currentSongIndex < 0) {
-        currentBuzzObject.stop();
-        SongPlayer.currentSong.playing = null;
+        stopSong();
+      } else {
+        var song = currentAlbum.songs[currentSongIndex];
+        setSong(song);
+        playSong(song);
+      }
+    };
+
+    /**
+    * @function next
+    * @desc This public method goes to the next song
+    */
+    SongPlayer.next = function() {
+      var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+      currentSongIndex++;
+
+      if (currentSongIndex >= currentAlbum.songs.length) {
+        stopSong();
       } else {
         var song = currentAlbum.songs[currentSongIndex];
         setSong(song);
