@@ -57,7 +57,7 @@
     * @function getSongIndex
     * @desc A private function getting the index of a song
     * @param {Object} song
-    * @returns {Integer} sond index
+    * @returns {Integer} song index
     */
     var getSongIndex = function(song) {
       return currentAlbum.songs.indexOf(song);
