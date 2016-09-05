@@ -42,11 +42,20 @@
 
          /**
          * @function fillStyle
-         * @desc is a public method that returns the width of the seek bar fill element based on the calculated percent
+         * @desc is a public method that updates the position of the seek bar thumb
          * @returns {Object} with the css property as the key, and the value a string of the percentage
          */
          scope.fillStyle = function() {
            return {width: percentString()};
+         };
+
+         /**
+         * @function thumbStyle
+         * @desc is a public method that returns the width of the seek bar fill element based on the calculated percent
+         * @returns {Object} with the css property as the key, and the value a string of the percentage
+         */
+         scope.thumbStyle = function() {
+           return {left: percentString()};
          };
 
          /**
